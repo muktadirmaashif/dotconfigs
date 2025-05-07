@@ -1,7 +1,20 @@
+" URL: https://vim.wikia.com/wiki/Example_vimrc
+" Authors: https://vim.wikia.com/wiki/Vim_on_Libera_Chat
+" Description: A minimal, but feature rich, example .vimrc. If you are a
+"              newbie, basing your first .vimrc on this file is a good choice.
+"              If you're a more advanced user, building your own .vimrc based
+"              on this file is still a good idea.
+
+"------------------------------------------------------------
+" Features {{{1
+"
+" These options and commands enable some very useful features in Vim, that
+" no user should have to live without.
+
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
-
+source $VIMRUNTIME/vimrc_example.vim
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -13,18 +26,6 @@ endif
 if has('syntax')
   syntax on
 endif
-
-
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-let mapleader = "\<space>"
-nnoremap <C-L> :nohl<CR><C-L>
-inoremap jk <esc>
-vnoremap jk <esc>
-nnoremap <Leader>w :w<cr>
-nnoremap <Leader>q :q<cr>
-nnoremap <Leader>wq :wq<cr>
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -156,4 +157,24 @@ colorscheme pablo
 " which is the default
 map Y y$
 
-set listchars=space:· list | highlight SpecialKey ctermfg=DarkGray guifg=DarkGray
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+
+let mapleader = " "
+nnoremap <C-L> :nohl<CR><C-L>
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>wq :wq<CR>
+set noswapfile
+set nowritebackup
+set nobackup
+set noundofile
+
+" Show tabs and trailing spaces
+set list
+set listchars=space:·
+highlight SpecialKey ctermfg=DarkGray guifg=DarkGray
+
+" highlight SpaceChar ctermfg=7 guifg=gray
+" match SpaceChar /\ze$(\s)$\ze/
